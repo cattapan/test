@@ -1,0 +1,74 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+   http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+	<display-name>Form3</display-name>
+	<context-param>
+		<param-name>javax.faces.PROJECT_STAGE</param-name>
+		<param-value>Development</param-value>
+	</context-param>
+	<context-param>
+		<param-name>javax.faces.CONFIG_FILES</param-name>
+		<param-value>/WEB-INF/faces-config.xml</param-value>
+	</context-param>
+	<context-param>
+		<param-name>resteasy.providers</param-name>
+		<param-value>com.cattapan.form3.auth.AuthFilter</param-value>
+	</context-param>
+	<context-param>
+		<param-name>resteasy.servlet.mapping.prefix</param-name>
+		<param-value>/api/v1</param-value>
+	</context-param>
+	<servlet>
+		<servlet-name>RESTEasyService</servlet-name>
+		<servlet-class>org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher</servlet-class>
+		<init-param>
+			<param-name>javax.ws.rs.Application</param-name>
+			<param-value>com.cattapan.form3.services.ResteasyBootstrap</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RESTEasyService</servlet-name>
+		<url-pattern>/api/v1/*</url-pattern>
+	</servlet-mapping>
+	<mime-mapping>
+		<extension>eot</extension>
+		<mime-type>application/vnd.ms-fontobject</mime-type>
+	</mime-mapping>
+	<mime-mapping>
+		<extension>otf</extension>
+		<mime-type>font/opentype</mime-type>
+	</mime-mapping>
+	<mime-mapping>
+		<extension>ttf</extension>
+		<mime-type>application/x-font-ttf</mime-type>
+	</mime-mapping>
+	<mime-mapping>
+		<extension>woff</extension>
+		<mime-type>application/x-font-woff</mime-type>
+	</mime-mapping>
+	<mime-mapping>
+		<extension>svg</extension>
+		<mime-type>image/svg+xml</mime-type>
+	</mime-mapping>
+	<mime-mapping>
+		<extension>ico</extension>
+		<mime-type>image/x-icon</mime-type>
+	</mime-mapping>
+	<servlet>
+		<servlet-name>Faces Servlet</servlet-name>
+		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>/faces/*</url-pattern>
+	</servlet-mapping>
+
+	<error-page>
+		<error-code>500</error-code>
+		<location>/WEB-INF/jsp/errorpages/error500.jsp</location>
+	</error-page>
+</web-app>
